@@ -82,8 +82,15 @@ Article.getAll = function(next) {
 Article.allAuthors = function() {
   //return       TODO: map our collection
     //return    TODO: return just the author names
-
-  /* TODO: For our `reduce` that we'll chain here -- since we are trying to
+  return Article.allArticles.map(function(article){
+    return article.author;
+  }).reduce(function(acc, next, idx, array){
+    if(array.indexOf(next) === idx){
+      acc.push(next);
+    };
+    return acc;
+  }, []);
+  /* DONE: For our `reduce` that we'll chain here -- since we are trying to
       return an array, we'll need to specify an accumulator type...
       What data type should this accumulator be and where is it placed? */
 };
