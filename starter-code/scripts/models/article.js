@@ -1,10 +1,11 @@
 // TODO: Wrap the entire contents of this file in an IIFE.
 // Pass in to the IIFE a module, upon which objects can be attached for later access.
-function Article (opts) {
-  for (key in opts) {
-    this[key] = opts[key];
+(function(module){
+  function Article (opts) {
+    for (key in opts) {
+      this[key] = opts[key];
+    }
   }
-}
 
 Article.prototype.toHtml = function(scriptTemplateId) {
   var template = Handlebars.compile($(scriptTemplateId).text());
@@ -63,15 +64,16 @@ Article.getAll = function(next) {
   });
 };
 
-/* TODO: Chain together a `map` and a `reduce` call to get a rough count of
+/* DONE: Chain together a `map` and a `reduce` call to get a rough count of
     all words in all articles. */
-Article.numWordsAll = function() {
-  return Article.allArticles.map(function(article) {
+  Article.numWordsAll = function() {
+    return Article.allArticles.map(function(article) {
       //DONE: Grab the word count from each article body.
     return article.body.split(' ').length;
   })
   // TODO: complete this reduce to get a grand total word count
-  .reduce(function() {
+  .reduce(function(current, next, idx, array) {
+    return (current + next);
   });
 };
 
@@ -101,3 +103,5 @@ Article.numWordsByAuthor = function() {
     };
   });
 };
+  module.Article = Article;
+})(window);
