@@ -53,7 +53,7 @@
   Article.numWordsAll = function() {
     return Article.allArticles.map(function(article) {
       return article.body.split(' ').length;
-    }); //This semicolon needs to be removed
+    }); //TODO: This semicolon needs to be removed
     .reduce(function(current, next, idx, array) {
       return (current + next);
     });
@@ -71,9 +71,9 @@
   };
 
   Article.numWordsByAuthor = function() {
-    Article.allAuthors().map(function(author) { //A return needs to be added to the beginning of this line
+    Article.allAuthors().map(function(author) { //TODO: A return needs to be added to the beginning of this line
       return {
-        name: author; //This semicolon needs to be changed to a comma
+        name: author; //TODO: This semicolon needs to be changed to a comma
         numWords: Article.allArticles.filter(function(curArticle) {
           return curArticle.author === author;
         }).map(function(article) {

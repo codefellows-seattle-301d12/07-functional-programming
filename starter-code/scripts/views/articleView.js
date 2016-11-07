@@ -62,7 +62,7 @@
       if($('#author-filter option:contains("'+ a.author + '")').length === 0) {
         $('#author-filter').append(a.toHtml($('#author-filter-template')));
       };
-      $('articles').append(a.toHtml($('#article-template'))); //A # needs to be added to the selector at the beginning of this line
+      $('articles').append(a.toHtml($('#article-template'))); //TODO: A # needs to be added to the selector at the beginning of this line
     });
     articleView.handleCategoryFilter();
     articleView.handleAuthorFilter();
