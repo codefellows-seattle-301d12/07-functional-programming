@@ -29,7 +29,7 @@
         success: function(data, message, xhr) {
           var eTag = xhr.getResponseHeader('eTag');
           if (!localStorage.eTag || eTag !== localStorage.eTag) {
-            Article.getAll(); //TODO: next needs to be passed into Article.getAll();
+            Article.getAll();
           } else {
             Article.loadAll(JSON.parse(localStorage.hackerIpsum));
             next();
@@ -37,7 +37,7 @@
         }
       });
     } else {
-      Article.getAll(); //TODO: next needs to be passed into Article.getAll();
+      Article.getAll();
     }
   };
 
@@ -53,7 +53,7 @@
   Article.numWordsAll = function() {
     return Article.allArticles.map(function(article) {
       return article.body.split(' ').length;
-    }); //This semicolon needs to be removed
+    });
     .reduce(function(current, next, idx, array) {
       return (current + next);
     });
@@ -71,9 +71,9 @@
   };
 
   Article.numWordsByAuthor = function() {
-    Article.allAuthors().map(function(author) { //A return needs to be added to the beginning of this line
+    Article.allAuthors().map(function(author) {
       return {
-        name: author; //This semicolon needs to be changed to a comma
+        name: author;
         numWords: Article.allArticles.filter(function(curArticle) {
           return curArticle.author === author;
         }).map(function(article) {
